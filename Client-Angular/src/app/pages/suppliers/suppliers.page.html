@@ -1,0 +1,40 @@
+@switch(state){
+
+    @case('loading'){
+        <app-alert alertState="loading" text="Cargando proveedores..." ></app-alert>
+    }
+
+    @case('error'){
+        <app-alert alertState="error" text="Error al cargar los proveedores" ></app-alert>
+    }
+
+    @case('success'){
+        <table class="table table-striped border">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Empresa</th>
+                    <th scope="col">Contacto</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Telefono</th>
+                    <th scope="col">Ciudad</th>
+                    <th scope="col">Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (supplier of suppliers; track supplier.id) {
+                    <tr>
+                        <th scope="row">{{ supplier.id }}</th>
+                        <td>{{ supplier.name }}</td>
+                        <td>{{ supplier.contactName }}</td>
+                        <td>{{ supplier.email }}</td>
+                        <td>{{ supplier.phone }}</td>
+                        <td>{{ supplier.city }}</td>
+                        <td>{{ supplier.status }}</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+}

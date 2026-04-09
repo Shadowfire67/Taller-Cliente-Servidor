@@ -1,0 +1,38 @@
+@switch(state){
+
+    @case('loading'){
+        <app-alert alertState="loading" text="Cargando ordenes..." ></app-alert>
+    }
+
+    @case('error'){
+        <app-alert alertState="error" text="Error al cargar las ordenes" ></app-alert>
+    }
+
+    @case('success'){
+        <table class="table table-striped border">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Codigo</th>
+                    <th scope="col">Cliente</th>
+                    <th scope="col">Total</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Fecha</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (order of orders; track order.id) {
+                    <tr>
+                        <th scope="row">{{ order.id }}</th>
+                        <td>{{ order.code }}</td>
+                        <td>{{ order.customerName }}</td>
+                        <td>{{ order.total }}</td>
+                        <td>{{ order.status }}</td>
+                        <td>{{ order.createdAt }}</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+}

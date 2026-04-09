@@ -1,0 +1,38 @@
+@switch(state){
+
+    @case('loading'){
+        <app-alert alertState="loading" text="Cargando cursos..." ></app-alert>
+    }
+
+    @case('error'){
+        <app-alert alertState="error" text="Error al cargar los cursos" ></app-alert>
+    }
+
+    @case('success'){
+        <table class="table table-striped border">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Titulo</th>
+                    <th scope="col">Instructor</th>
+                    <th scope="col">Horas</th>
+                    <th scope="col">Area</th>
+                    <th scope="col">Activo</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (course of courses; track course.id) {
+                    <tr>
+                        <th scope="row">{{ course.id }}</th>
+                        <td>{{ course.title }}</td>
+                        <td>{{ course.instructor }}</td>
+                        <td>{{ course.durationHours }}</td>
+                        <td>{{ course.area }}</td>
+                        <td>{{ course.isActive ? 'Si' : 'No' }}</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+}
